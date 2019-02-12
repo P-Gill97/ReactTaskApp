@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Note from './components/Note';
 import './App.css';
 
 
@@ -23,6 +24,10 @@ class App extends Component {
 
     }
   render() {
+    let notes = this.state.map((val, key)) => {
+      return <Note key={key} text = {val}
+                      deleteMethod={() => this.deleteNote(key) } />
+    }
     return (
       <div className="container">
         <div className = "header">Cross platform Todo Application</div>
