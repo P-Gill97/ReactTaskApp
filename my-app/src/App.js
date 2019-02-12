@@ -23,6 +23,13 @@ class App extends Component {
       }
 
     }
+    deleteNote(index){
+      let notesArr = this.state.notes;
+      notesArr.splice(index, 1);
+      this.setState({notes = notesArr})
+    }
+
+
   render() {
     let notes = this.state.map((val, key)) => {
       return <Note key={key} text = {val}
@@ -31,7 +38,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className = "header">Cross platform Todo Application</div>
-        <div className = "btn">+</div>
+        <div className = "btn" onClick = {this.addNode.bind(this)}>+</div>
         <input type = "text"
           ref= {((input) => {this.textInput = input})}
           className = "textInput"
