@@ -6,9 +6,13 @@ import './App.css';
 class App extends Component {
     constructor(props){
       super(props);
+      // setting state of component.
       this.state = {
         noteText: '',
-        notes:[],
+        notes:[
+          {id:1 , nText: " Sample"},
+        {id:1 , nText: " Sample"}
+      ],
       }
 
     }
@@ -41,7 +45,7 @@ class App extends Component {
 
     }
 
-
+// 17:45
   render() {
     let notes = this.state.notes.map((val,key) => {
       return <Note key={key} text = {val}
@@ -50,17 +54,19 @@ class App extends Component {
     return (
       <div className="container">
         <div className = "header">Cross platform Todo Application</div>
-      
-        {notes}
+        <div className = "note">
+          this.state.notes.map((note) => {
+            return(
+              <Note nText ={} nId={} nPriority={} key ={} /> // 
 
-        <div className = "btn" onClick = {this.addNode.bind(this)}>+</div>
-        <input type = "text"
-          ref= {((input) => {this.textInput = input})}
-          className = "textInput"
-          value = {this.state.noteText}
-          onChange = {noteText => this.updateNoteText(noteText)}
-          onKeyPress = {this.handleKeyPress.bind(this)}
-          />
+            )
+          });
+        </div>
+        <div className = "footer">
+
+        </div>
+
+
       </div>
     );
   }
