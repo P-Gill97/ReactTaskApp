@@ -1,73 +1,44 @@
 import React, { Component } from 'react';
-import Note from './components/Note';
+import Note from './components/Note.jsx';
 import './App.css';
-
+import Form from './components/Form.jsx';
 
 class App extends Component {
     constructor(props){
       super(props);
       // setting state of component.
       this.state = {
-        noteText: '',
         notes:[
-          {id:1 , nText: " Sample"},
-        {id:1 , nText: " Sample"}
+          {id: 1, noteContent:  " banana " , notePriority:"High"}
       ],
-      }
-
-    }
-    updateNoteText(noteText){
-      this.setState({noteText: noteText.target.value})
-      console.log(this.state.noteText)
-    }
-    addNode(){
-      if(this.state.noteText === ''){return}
-
-      let notesArr = this.state.notes;
-      notesArr.push(this.state.noteText);
-      // resetting state of note to empty
-      this.setState({ noteText: ''})
-      //refocus input field
-      this.textInput.focus();
-    }
-    handleKeyPress= (event)  =>{
-      if(event.key === 'Enter'){
-
 
       }
 
     }
-
-    deleteNote(index){
-      let notesArr = this.state.notes;
-      notesArr.splice(index, 1);
-      this.setState({notes : notesArr})
-
-    }
-
 // 17:45
   render() {
-    let notes = this.state.notes.map((val,key) => {
-      return <Note key={key} text = {val}
-                      deleteMethod={ () => this.deleteNote(key) } />
-                  })
+
     return (
       <div className="container">
         <div className = "header">Cross platform Todo Application</div>
-        <div className = "note">
+        <div className = "">
+          {
           this.state.notes.map((note) => {
             return(
-              <Note nText ={} nId={} nPriority={} key ={} /> // 
 
+              <Note noteContent ={note.noteContent}
+                noteId={note.noteId}
+                notePriority={note.notePriority}
+                key ={note.noteId} /> //
             )
-          });
+          })
+        }
         </div>
-        <div className = "footer">
+        <div className = "form">
+            <Form/>
 
         </div>
-
-
-      </div>
+      </div> // parent div
     );
   }
 }
