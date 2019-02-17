@@ -30,7 +30,8 @@ setPriority(e){
   console.log(this);
 }
 addNote(){
-this.props.addNote(this.state.newNoteContent);
+
+this.props.addNote(this.state.newNoteContent,this.state.newPriority);
 
 
 
@@ -51,6 +52,7 @@ this.props.addNote(this.state.newNoteContent);
             <label  >Priority</label>
               <select className="Priority-control "
                       onChange = {this.setPriority}>
+                <option value="" disabled selected >No Priority</option>
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>

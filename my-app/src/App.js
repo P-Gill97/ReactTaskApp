@@ -16,12 +16,12 @@ class App extends Component {
       this.addNote = this.addNote.bind(this);
     }
 // 17:45
-addNote(note){
+addNote(note,priority){
   const tempnotes = this.state.notes;
 
-  tempnotes.push(note);
+  tempnotes.push({id: tempnotes.length+1, noteContent:note, notePriority: priority});
   this.setState({
-  this.state.notes = tempnotes;
+  notes: tempnotes
 
   })
 
