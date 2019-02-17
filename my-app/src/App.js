@@ -19,7 +19,7 @@ class App extends Component {
 
     }
 componentWillMount(){
-  const previousList = this.state.note;
+  const previousList = this.state.notes;
   this.database.on('child_added', snap =>{
     previousList.push({
       id: snap.key,
@@ -36,7 +36,7 @@ componentWillMount(){
 
 
 addNote(note,priority){
-this.database.push().set({ noteContent:note, notePriority:priority});
+  this.database.push().set({ noteContent:note, notePriority:priority});
 
 }
 // componenet will mount

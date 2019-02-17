@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #AA7339;
+  background: #1C1D00;
 }
 html, body {
   width: 100%;
@@ -25,17 +25,17 @@ html, body {
 
   font-weight: bold;
   font-style: normal;
-  color: #000000;
-  background: #EEC192;
+  color: #F8F8F5;
+  background: #25260E;
   padding: 40px;
 }
 /* The note */
 .note {
-  color: #BLACK;
+  color: #ffffff;
   margin: 15px;
   padding: 40px;
-  background: #F0CDA9;
-  border: solid 1px #e9e9e9;
+  background: #3C3F00;
+  border: solid 1px #262801;
   cursor: pointer;
   box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
   -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
@@ -59,7 +59,7 @@ html, body {
   font-size: 32px;
   font-weight: bold;
   color: #f1f1f1;
-  background: #54402C;
+  background: #828700;
   cursor: pointer;
   box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.8);
   -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.8);
@@ -80,13 +80,13 @@ html, body {
   padding: 0 20px;
   border: none;
   outline: none;
-  background: #663705;
+  background: #818600;
   font-size: 16px;
   color: #f1f1f1;
 }
 .noteInput{
-    width: 800px;
-    min-width: 800px;
+    width: 700px;
+    min-width: 700px;
     font-size: 1.3em;
     padding-left: 20px;
     border-top-left-radius: 4px;
