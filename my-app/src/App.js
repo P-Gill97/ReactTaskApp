@@ -2,30 +2,46 @@ import React, { Component } from 'react';
 import Note from './components/Note.jsx';
 import './App.css';
 import Form from './components/Form.jsx';
-
+import {DB_CONFIG} from './config/config';
+import firebase from 'firebase/app';
+import 'firebase/database';
 class App extends Component {
     constructor(props){
       super(props);
-
+  this.addNote = this.addNote.bind(this);
+  //45:37
+      this.app = firebase.initializeApp(DB_CONFIG);
+      this.database = this.app.database().ref().child('notes');
       // setting state of component.
       this.state = {
-        notes:[
-          {id: 1, noteContent:  " banana " , notePriority:"High"}
-      ],
+        notes:[],
       }
-      this.addNote = this.addNote.bind(this);
+
     }
-// 17:45
-addNote(note,priority){
-  const tempnotes = this.state.notes;
+componentWillMount(){
+  const previousList = this.state.note;
+  this.database.on('child_added', snap =>{
+    previousList.push({
+      id: snap.key,
+      noteContent: snap.val().noteContent,
+      notePriority: snap.val().notePriority,
+    })
 
-  tempnotes.push({id: tempnotes.length+1, noteContent:note, notePriority: priority});
-  this.setState({
-  notes: tempnotes
-
+    this.setState({
+      notes: previousList
+    })
   })
+}
+
+
+
+addNote(note,priority){
+this.database.push().set({ noteContent:note, notePriority:priority});
 
 }
+// componenet will mount
+// then render
+// then componenet did mount
   render() {
 
     return (
