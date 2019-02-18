@@ -36,7 +36,7 @@ this.props.addNote(this.state.newNoteContent,this.state.newPriority);
 
 
   this.setState({
-
+    newNoteContent: '',
   })
 }
   render(){
@@ -61,7 +61,7 @@ this.props.addNote(this.state.newNoteContent,this.state.newPriority);
 
           <button className ="btn"
                   onClick = {this.addNote}
-          >+</button>
+          > +</button>
 
           </div>
 

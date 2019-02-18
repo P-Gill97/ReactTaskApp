@@ -9,7 +9,8 @@ class App extends Component {
     constructor(props){
       super(props);
   this.addNote = this.addNote.bind(this);
-  //45:37
+
+  this.removeNote = this.removeNote.bind(this);
       this.app = firebase.initializeApp(DB_CONFIG);
       this.database = this.app.database().ref().child('notes');
       // setting state of component.
@@ -29,16 +30,30 @@ componentWillMount(){
 
     this.setState({
       notes: previousList
+      })
     })
+    this.database.on('child_removed', snap  => {
+      for(var i =0; i< previousList.length; i++){
+        if(previousList[i].id === snap.key){
+          previousList.splice(i,1);
+        }
+      }
+      this.setState({
+        notes: previousList
+      })
   })
 }
 
 
-
+removeNote(noteId){
+  console.log("from the parent" + noteId );
+  this.database.child(noteId).remove();
+}
 addNote(note,priority){
   this.database.push().set({ noteContent:note, notePriority:priority});
 
 }
+
 // componenet will mount
 // then render
 // then componenet did mount
@@ -52,9 +67,10 @@ addNote(note,priority){
           this.state.notes.map((note) => {
             return(
               <Note noteContent ={note.noteContent}
-                noteId={note.noteId}
+                noteId={note.id}
                 notePriority={note.notePriority}
-                key ={note.noteId} /> //
+                removeNote = {this.removeNote}
+                key ={note.id}/>
             )
           })
         }
